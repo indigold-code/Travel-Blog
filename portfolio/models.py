@@ -10,7 +10,11 @@ class Post(models.Model):
     summary = models.CharField(max_length=255)
     adventure_date = models.DateField()
     published = models.DateTimeField(default=datetime.now)
-    
+    likes = models.ManyToManyField(User, related_name='blog_post')
+
+
+    def total_likes(self):
+        return self.likes.count()
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)

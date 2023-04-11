@@ -22,7 +22,7 @@
     <div>   
         <ul>
         {% for post in object_list %}    
-            <li><a href="{% url 'article-detail' pk=post.pk %}">{{ post.title }}</a> - {{ post.author.first_name }} {{ post.author.last_name }}<br/>
+            <li><a href="{% url 'article_detail' pk=post.pk %}">{{ post.title }}</a> - {{ post.author.first_name }} {{ post.author.last_name }}<br/>
             {{ post.summary }}</li>  {{ post.adventure_date }}<br/>
         {% endfor %}
         </ul>
