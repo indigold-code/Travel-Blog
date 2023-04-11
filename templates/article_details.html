@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+<title>
+{% block title %}
+{{ post.summary }}
+{% endblock %}
+</title>
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+<small>By {{ post.author.first_name }} {{ post.author.last_name }} <br/> Date of Aventure: {{ post.adventure_date }}</small> <br/>
+<hr>
+<br/>
+{{ post.body }}
+
+<br/><br/>
+<a href="{% url 'blog' %}" class="btn btn-secondary">Back</a>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<small>Date of Publication {{ post.published }}</small>
+
+{% endblock %}
