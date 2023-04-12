@@ -7,7 +7,11 @@
 
 {% block content %}
 <h1>{{ post.title }}</h1>
-<small>By {{ post.author.first_name }} {{ post.author.last_name }} <br/> Date of Aventure: {{ post.adventure_date }}</small> <br/>
+<small>By
+    {{ post.author.first_name }}
+    {{ post.author.last_name }} <br/> 
+    Date of Aventure: {{ post.adventure_date }}
+</small> <br/>
 <hr>
 <br/>
 {{ post.body|safe }}
@@ -20,7 +24,13 @@
 {% if user.is_authenticated %}
 <form action="{% url 'like_post' post.pk %}", method="POST">
     {% csrf_token %}
-    <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-primary btn-sm" >Like</button> - {{ total_likes }} Like(s)
+
+    {% if liked  %}
+        <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-danger btn-sm" >Unlike</button>
+    {% else %}
+        <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-primary btn-sm" >Like</button>
+    {% endif %}
+    - {{ total_likes }} Like(s)
 </form>
 {% endif %}
 
