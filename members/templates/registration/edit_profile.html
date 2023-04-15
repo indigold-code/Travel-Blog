@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title%}
+Edit Profile
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}   
+<h1>Edit Profile</h1>
+<br/>
+<br/>
+<br/>
+<div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <a href="{% url 'change_password' %}" class="btn btn-secondary">Change Password</a> <br/> <br/>
+            <button class="btn btn-secondary">Save</button>        
+</div>
+
+
+{% endif %}
+{% endblock %}
+    
